@@ -43,11 +43,9 @@ per threat. Finally, your CI/CD pipeline can be automatically blocked if these p
 This provides enhanced safeguards to your application, thwarting the deployment of code that contains
 documented threats to the production environment.
 
+![code snap](docs/assets/snap.png)
+
 <h2 id="getting-started"> 🚶 Getting Started</h2>
-
-* More details about in [**documentation**](docs/index.md).
-* See [examples](https://github.com/andersonbosa/security-goat/blob/main/examples/README.md) to further uses.
-
 
 ### Installation
 
@@ -137,6 +135,9 @@ Flags:
 
 Use "security-goat [command] --help" for more information about a command.
 ```
+
+* More details about in [**documentation**](docs/index.md).
+* See [examples](https://github.com/andersonbosa/security-goat/blob/main/examples/README.md) to further uses.
 
 
 <h2 id="technologies"> 🛠️ Technologies</h2>

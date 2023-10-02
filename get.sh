@@ -67,7 +67,7 @@ checkHash() {
 downloadPackage() {
   local url=$1
   local targetFile=$2
-  curl -SL $url --output $targetFile 2>/dev/null || wget -v - --output-document=$targetFile --progress=bar $url
+  curl -L $url --output $targetFile 2>/dev/null || wget -v - --output-document=$targetFile --progress=bar $url
 }
 
 getPackage() {

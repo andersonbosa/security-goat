@@ -1,0 +1,29 @@
+# Download Security Goat CLI using utilitary script
+❯ curl -sSL https://github.com/andersonbosa/security-goat/raw/main/get.sh | sudo sh
+Downloading package https://github.com/andersonbosa/security-goat/releases/download/v0.0.1/security-goat-linux-amd64 as /tmp/security-goat-linux-amd64
+Download complete.
+
+Running with sufficient permissions to attempt to move security-goat to /usr/local/bin
+New version of security-goat installed to /usr/local/bin
+Creating alias 'sgoat' for 'security-goat'.
+🐐 security-goat version: 0.0.1
+
+
+# Source environment variables [create you own file to export env vars]
+❯ source ~/envs/security_goat
+
+
+❯ sgoat
+2023-10-02T16:30:49-03:00 INF: 🐐 Initializing Security Goat!
+2023-10-02T16:30:49-03:00 INF: Analyzing GitHub Alerts from: https://github.com/andersonbosa/security-goat
+2023-10-02T16:30:50-03:00 INF: Total alerts: 0
+2023-10-02T16:30:50-03:00 INF: Finazling the process with error code: 0.
+
+
+# Overwwriting the repo name
+❯ security-gate --repo nlw12-spacetime #
+2023-10-02T16:30:55-03:00 INF: 🐐 Initializing Security Goat!
+2023-10-02T16:30:55-03:00 INF: Analyzing GitHub Alerts from: https://github.com/andersonbosa/nlw12-spacetime
+2023-10-02T16:31:00-03:00 INF: Total alerts: 19
+2023-10-02T16:31:00-03:00 INF: More than 0 high security alerts found.
+2023-10-02T16:31:00-03:00 INF: Finazling the process with error code: 1.
