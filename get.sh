@@ -63,6 +63,13 @@ checkHash() {
   fi
 }
 
+# curl -sSL $url --output $targetFile
+downloadPackage() {
+  local url=$1
+  local targetFile=$2
+  curl -SL $url --output $targetFile 2>/dev/null || wget -v - --output-document=$targetFile --progress=bar $url
+}
+
 getPackage() {
   uname=$(uname)
   userid=$(id -u)
@@ -83,11 +90,9 @@ getPackage() {
     suffix="-windows"
     BINLOCATION="$HOME/bin"
     mkdir -p $BINLOCATION
-
     ;;
   "Linux")
     suffix="-linux"
-
     ;;
   esac
 
@@ -106,7 +111,8 @@ getPackage() {
   url=https://github.com/$OWNER/$REPO/releases/download/$version/$REPO$suffix
   echo "Downloading package $url as $targetFile"
 
-  curl -sSL $url --output $targetFile
+  # curl -sSL $url --output $targetFile
+  downloadPackage $url $targetFile
 
   if [ "$?" = "0" ]; then
 
