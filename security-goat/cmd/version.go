@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -13,6 +14,7 @@ var versionCmd = &cobra.Command{
 	Short: "Print the version number of the application",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("🐐 security-goat version: %s\n", Version)
+		os.Exit(0)
 	},
 }
 
