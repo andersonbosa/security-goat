@@ -82,11 +82,10 @@ For more details and options, you can run 'security-goat --help'.`,
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute(args []string) {
-	// if args[0] == "version" {
-	// versionCmd.Run(versionCmd, args)
-	// os.Exit(successExitCode)
-	// return
-	// }
+	if len(args) > 0 && args[0] == "version" {
+		versionCmd.Run(versionCmd, args)
+		os.Exit(successExitCode)
+	}
 
 	rootCmd.SetArgs(args)
 

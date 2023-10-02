@@ -36,7 +36,7 @@ jobs:
     - name: Pull Docker image from GitHub Container Registry
       run: docker pull ${{ env.SECURITY_GOAT_IMAGE }}
 
-    - name: Verify Security Goat version
+    - name: Verify Version
       run: docker run ${{ env.SECURITY_GOAT_IMAGE }} version
 
     - name: Set up env file
