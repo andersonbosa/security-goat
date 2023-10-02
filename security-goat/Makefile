@@ -1,9 +1,12 @@
-.PHONY: all build-linux build-macos build-windows generate-checksum clean
+.PHONY: all clean build-linux build-macos build-windows generate-checksum
 
 BINARY_NAME=security-goat
 RELEASE_PATH=../build
 
-release: build-linux build-macos build-windows generate-checksum
+dev:
+	watch -d -n1 'go run main.go'
+
+release-build: clean build-linux build-macos build-windows generate-checksum
 
 build-linux:
 	GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o $(RELEASE_PATH)/$(BINARY_NAME)-linux-amd64 main.go
@@ -23,14 +26,11 @@ generate-checksum:
 clean:
 	rm -f $(RELEASE_PATH)/$(BINARY_NAME)-* $(RELEASE_PATH)/*.sha256
 
-run:
-	go run main.go
-
 # Make the module available by running the go list command to prompt Go to update its index of modules with information about the module you’re publishing.
 go-publish:
 	GOPROXY=proxy.golang.org go list -m github.com/andersonbosa/security-goat@latest
 	go install github.com/andersonbosa/security-goat@latest
 
 docker:
-	docker build -t security-goat:latest . && docker run --rm -it security-goat:latest 
+	docker build -t security-goat:latest . && docker run --rm -it security-goat:latest
 
