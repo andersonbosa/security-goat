@@ -1,0 +1,16 @@
+github:
+  owner: "YOUR_GITHUB_OWNER"
+  repo: "YOUR_GITHUB_REPO"
+  token: "YOUR_GITHUB_TOKEN"
+
+severity_limits:
+  critical: 0
+  high: 0
+  medium: 11
+  low: 20
+
+exit_codes:
+  # range: 0-255
+  success: 0
+  error: 1
+  fatal: 128
