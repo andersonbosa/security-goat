@@ -10,7 +10,8 @@ on:
   # group: "ci-main"
   # cancel-in-progress: false
 
-
+permissions:
+  contents: read
 
 jobs:
   # update-binaries:
@@ -24,7 +25,6 @@ jobs:
   ghcrio:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       packages: write
     steps:
       - name: Checkout code
@@ -48,11 +48,8 @@ jobs:
         with:
           context: ./security-goat/.
           push: true
-          tags: ghcr.io/andersonbosa/publish-packages/security-goat:latest
-          labels: ${{ steps.meta.outputs.labels }}
-  # TOFIX:
-  # ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
-  # Error: buildx failed with: ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+          tags: ghcr.io/${{ github.repository }}:${{ github.sha }},ghcr.io/${{ github.repository }}:latest
+
   dockerhub:
     runs-on: ubuntu-latest
     steps:
