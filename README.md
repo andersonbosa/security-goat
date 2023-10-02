@@ -45,12 +45,14 @@ documented threats to the production environment.
 
 <h2 id="getting-started"> 🚶 Getting Started</h2>
 
-* Further details in the the [documentation](docs/index.md).
+* More details about in [**documentation**](docs/index.md).
+* See [examples](https://github.com/andersonbosa/security-goat/blob/main/examples/README.md) to further uses.
+
 
 ### Installation
 
 You can install the CLI with a `curl` utility script or by downloading the pre-compiled binary from the GitHub release page.
-Once installed youl'll get the `security-goat` command and `sgoat` alias.
+Once installed you'll get the `security-goat` command and `sgoat` alias.
 
 Utility script with `curl`:
 ```bash
@@ -65,12 +67,6 @@ curl -sSL https://github.com/andersonbosa/security-goat/raw/main/get.sh | sh
 ### Windows
 To install the security-goat on Windows go to [Releases](https://github.com/andersonbosa/security-goat/releases) and download the latest `.exe`.
 
-
-Or you can also simply run the following if you have an existing [Go](https://golang.org) environment:
-```bash
-go get github.com/andersonbosa/security-goat
-```
-
 If you want to build it yourself, clone the source files using GitHub, change into the `security-goat` directory and run:
 ```bash
 git clone https://github.com/andersonbosa/security-goat.git
@@ -78,15 +74,11 @@ cd security-goat
 go install
 ```
 
-### Simple usage
+### Usage
 
-- Check [examples](https://github.com/andersonbosa/security-goat/blob/main/examples/README.md) to further details
-
-#### Binary
+#### With envinroment variables
 
 ```bash
-curl -sSL https://github.com/andersonbosa/security-goat/raw/main/get.sh | sh
-
 export GOAT_GITHUB_TOKEN="your_token"
 export GOAT_GITHUB_OWNER="your_username"
 export GOAT_GITHUB_REPO="your_repository"
@@ -95,10 +87,10 @@ export GOAT_SEVERITY_LIMITS_HIGH=1
 export GOAT_SEVERITY_LIMITS_MEDIUM=2
 export GOAT_SEVERITY_LIMITS_LOW=10
 
-security-goat --verbose 
+security-goat --verbose --repo another_repository
 ```
 
-#### Docker
+#### With docker container
 
 ```bash
 # With Docker Hub Registry:
@@ -108,12 +100,53 @@ docker run --rm t4inha/security-goat:latest --help
 docker run --rm ghcr.io/andersonbosa/security-goat:latest --help
 ```
 
+#### CLI
+
+```
+Security Gote is a CLI application that allows you to analyze security alerts
+and manage security configurations for GitHub repositories. It provides insights
+into vulnerabilities and helps you maintain a secure software ecosystem.
+
+For more details and options, you can run 'security-goat --help'.
+
+Usage:
+  security-goat [flags]
+  security-goat [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  version     Print the version number of the application
+
+Flags:
+      --config string   config file (default is $HOME/.security-goat.yaml)
+  -C, --critical int    Critical severity limit
+      --dryrun          Don't perform security gate
+      --error int       Customize exit code to error (default 1)
+      --fatal int       Customize exit code to fatal (default 128)
+  -h, --help            help for security-goat
+  -H, --high int        High severity limit (default 1)
+      --insecure        skip TLS verification and use insecure http client
+  -L, --low int         Low severity limit (default 5)
+  -M, --medium int      Medium severity limit (default 2)
+  -o, --owner string    GitHub owner
+  -r, --repo string     GitHub repository
+      --success int     Customize exit code to success
+  -t, --token string    GitHub token
+  -v, --verbose         more logs
+
+Use "security-goat [command] --help" for more information about a command.
+```
+
+
 <h2 id="technologies"> 🛠️ Technologies</h2>
 
 * [Go](#)
 * [Cobra](#)
 * [Viper](#)
 * [GitHub GraphQL API](#)
+* [Github Container Registry](#)
+* [Docker Hub](#)
 
 
 <h2 id="contribution">🤝 Contribution</h2>
@@ -121,7 +154,6 @@ docker run --rm ghcr.io/andersonbosa/security-goat:latest --help
 <p>
   This project is for study purposes too, so please send me a message telling me what you are doing and why you are doing it, teach me what you know. All kinds of contributions are very welcome and appreciated!
 </p>
-
 
 
 <h2 id="license"> 📝 License</h2>
