@@ -10,9 +10,7 @@ on:
   # group: "ci-main"
   # cancel-in-progress: false
 
-permissions:
-  contents: read
-  packages: write
+
 
 jobs:
   # update-binaries:
@@ -25,6 +23,9 @@ jobs:
 
   ghcrio:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
