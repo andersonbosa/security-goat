@@ -1,9 +1,6 @@
 # Use the official Go image as the base image
 FROM golang:latest AS builder
 
-LABEL org.opencontainers.image.source=https://github.com/andersonbosa/security-goat
-
-
 # Set the working directory
 WORKDIR /go/src/github.com/andersonbosa/security-goat
 
