@@ -16,33 +16,19 @@ on:
 permissions:
   contents: read
 
-jobs:
-  through-github:
-    runs-on: ubuntu:latest
-    container: 
-      image: ghcr.io/andersonbosa/publish-packages/security-goat:latest
-    env:
-      GOAT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GOAT_GITHUB_OWNER: ${{ github.repository_owner }}
-      GOAT_GITHUB_REPO: ${{ github.event.repository.name }}
-      GOAT_SEVERITY_LIMITS_CRITICAL: 0
-      GOAT_SEVERITY_LIMITS_HIGH: 0
-      GOAT_SEVERITY_LIMITS_MEDIUM: 0
-      GOAT_SEVERITY_LIMITS_LOW: 0
-    steps:
-      - uses: actions/checkout@v4
+env:
+  SECURITY_GOAT_IMAGE: ghcr.io/andersonbosa/publish-packages/security-goat:latest
+  GOAT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GOAT_GITHUB_OWNER: ${{ github.repository_owner }}
+  GOAT_GITHUB_REPO: ${{ github.event.repository.name }}
+  GOAT_SEVERITY_LIMITS_CRITICAL: 0
+  GOAT_SEVERITY_LIMITS_HIGH: 0
+  GOAT_SEVERITY_LIMITS_MEDIUM: 0
+  GOAT_SEVERITY_LIMITS_LOW: 0
 
-      - name: Verify Security Goat version
-        run: security-goat version
-      
-      - name: Verify security alerts from dependabot
-        run: security-goat --verbose
-  
+jobs:
   through-docker:
     runs-on: ubuntu-latest
-    env:
-      SECURITY_GOAT_IMAGE: ghcr.io/andersonbosa/publish-packages/security-goat:latest
-      
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -54,20 +40,33 @@ jobs:
       run: docker run ${{ env.SECURITY_GOAT_IMAGE }} version
 
     - name: Set up env file
-      env: 
-        GOAT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GOAT_GITHUB_OWNER: ${{ github.repository_owner }}
-        GOAT_GITHUB_REPO: ${{ github.event.repository.name }}
-        GOAT_SEVERITY_LIMITS_CRITICAL: 0
-        GOAT_SEVERITY_LIMITS_HIGH: 0
-        GOAT_SEVERITY_LIMITS_MEDIUM: 0
-        GOAT_SEVERITY_LIMITS_LOW: 0
       run: |
         env | grep 'GOAT' >.env
 
     - name: Verify security alerts from dependabot
       run: |
         docker run --env-file=.env ${{ env.SECURITY_GOAT_IMAGE }} --verbose
+
+  # through-github:
+  #   runs-on: ubuntu:latest
+  #   container:
+  #     image: ghcr.io/andersonbosa/publish-packages/security-goat:latest
+  #   env:
+  #     GOAT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     GOAT_GITHUB_OWNER: ${{ github.repository_owner }}
+  #     GOAT_GITHUB_REPO: ${{ github.event.repository.name }}
+  #     GOAT_SEVERITY_LIMITS_CRITICAL: 0
+  #     GOAT_SEVERITY_LIMITS_HIGH: 0
+  #     GOAT_SEVERITY_LIMITS_MEDIUM: 0
+  #     GOAT_SEVERITY_LIMITS_LOW: 0
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - name: Verify Security Goat version
+  #       run: security-goat version
+
+  #     - name: Verify security alerts from dependabot
+  #       run: security-goat --verbose
 
   # through-get:
   #   runs-on: ubuntu-latest
