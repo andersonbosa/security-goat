@@ -105,7 +105,7 @@ security-goat --verbose
 docker run --rm t4inha/security-goat:latest --help
 
 # Or using Github Container Registry
-docker run --rm ghcr.io/andersonbosa/publish-packages/security-goat:latest --help
+docker run --rm ghcr.io/andersonbosa/security-goat:latest --help
 ```
 
 <h2 id="technologies"> 🛠️ Technologies</h2>

@@ -1,4 +1,4 @@
-name: "[security] Security Goat"
+name: "[security] Security Goat in pipeline"
 
 on:
   workflow_dispatch: {}
@@ -17,7 +17,7 @@ permissions:
   contents: read
 
 env:
-  SECURITY_GOAT_IMAGE: ghcr.io/andersonbosa/publish-packages/security-goat:latest
+  SECURITY_GOAT_IMAGE: ghcr.io/andersonbosa/security-goat:latest
   GOAT_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_ACCESS_TOKEN }}
   GOAT_GITHUB_OWNER: ${{ github.repository_owner }}
   GOAT_GITHUB_REPO: ${{ github.event.repository.name }}
@@ -50,7 +50,7 @@ jobs:
   # through-github:
   #   runs-on: ubuntu:latest
   #   container:
-  #     image: ghcr.io/andersonbosa/publish-packages/security-goat:latest
+  #     image: ghcr.io/andersonbosa/security-goat:latest
   #   env:
   #     GOAT_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_ACCESS_TOKEN }}
   #     GOAT_GITHUB_OWNER: ${{ github.repository_owner }}
