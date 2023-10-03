@@ -161,6 +161,8 @@ Use "security-goat [command] --help" for more information about a command.
 
 This project is under the MIT license.
 
+This project was inpired by [Securty Gate](https://github.com/instriq/security-gate) from [instriq](https://github.com/instriq) 
+
 ---
 
 <h4>  
