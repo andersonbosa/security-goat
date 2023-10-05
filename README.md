@@ -139,6 +139,12 @@ Use "security-goat [command] --help" for more information about a command.
 * More details about in [**documentation**](docs/index.md).
 * See [examples](https://github.com/andersonbosa/security-goat/blob/main/examples/README.md) to further uses.
 
+<h2 id="distribution"> 🖨️ Distribution</h2>
+
+- Docker image: https://hub.docker.com/r/t4inha/security-goat
+- Docker image: https://github.com/andersonbosa/security-goat/pkgs/container/security-goat
+- Binaries: https://github.com/andersonbosa/security-goat/releases / [builds](https://github.com/andersonbosa/security-goat/tree/main/build)
+- Install utility: https://github.com/andersonbosa/security-goat/blob/main/get.sh
 
 <h2 id="technologies"> 🛠️ Technologies</h2>
 
