@@ -34,9 +34,8 @@
 
 Security-Goat is a command line client to perform [Security Gate](#) written in [Go](#). It interacts with DependaBot alerts using GitHub GraphQL API.
 
-This project enables you to utilize a Security Gate on Github, utilizing Actions and your
-project's Security Alerts as a foundation of information. Presently, only Dependabot Alerts are supported;
-soon there will be support for Secrets and Security Advisories Alerts.
+This project enables you to perform a Security Gate on GitHub, utilizing GitHub Actions and your
+project's Security Alerts as a foundation of information. Presently, only Dependabot Alerts are supported.
 
 You can establish a vulnerability policy based on the impact, i.e. the number of vulnerabilities
 per threat. Finally, your CI/CD pipeline can be automatically blocked if these policies are not met.
